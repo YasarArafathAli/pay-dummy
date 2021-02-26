@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function e_names(arr) {
+            var countie = 0;
+            var county = 0
+            for (i= 0; i<arr.length;i++) {
+                console.log(arr[i]);
+                var pos1 = arr[i].search(/ie$/);
+                var pos2 = arr[i].search(/y$/);
+                if(pos1 >= 0 ) {
+                    countie++
+                }
+                else if (pos2 >= 0){
+                    county++;
+                }
+            }
+            return `strings end with "ie" = ${countie} <br> strings end with "y" = ${county}`
+        }
+        document.write(e_names(["happy", "hello", "maggie", "trello"]))
+    </script>
+</body>
+
+</html>
