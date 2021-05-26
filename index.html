@@ -1,96 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  <body>
 
-<body>
+    Checkout Amount : $ 11 USD
 
-  <div id="paypal-button"></div>
-  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-  <script>
-    paypal.Button.render({
-      // Configure environment
-      env: 'sandbox',
-      client: {
-        sandbox: 'ARavIGXjeAD03cl7kRq0ReK4NXv0-xoTbTxp9lmZR3FKewu1Ex89pL-tXMvL-pLjOjnjjG_w8yGlB7fg',
-        production: 'demo_production_client_id'
-      },
-      // Customize button (optional)
-      locale: 'en_US',
-      style: {
-        size: 'small',
-        color: 'gold',
-        shape: 'pill',
-      },
-
-      // Enable Pay Now checkout flow (optional)
-      commit: true,
-
-      // Set up a payment
-      payment: function (data, actions) {
-        return actions.payment.create({
-          transactions: [{
-            amount: {
-              total: '30.11',
-              currency: 'INR',
-            },
-            description: 'The payment transaction description.',
-            custom: '90048630024435',
-            //invoice_number: '12345', Insert a unique invoice number
-            payment_options: {
-              allowed_payment_method: 'INSTANT_FUNDING_SOURCE'
-            },
-            soft_descriptor: 'ECHI5786786',
-            item_list: {
-              items: [{
-                  name: 'hat',
-                  description: 'Brown hat.',
-                  quantity: '5',
-                  price: '3',
-                  tax: '0.01',
-                  sku: '1',
-                  currency: 'INR'
-                },
-                {
-                  name: 'handbag',
-                  description: 'Black handbag.',
-                  quantity: '1',
-                  price: '15',
-                  tax: '0.02',
-                  sku: 'product34',
-                  currency: 'INR'
-                }
-              ],
-              shipping_address: {
-                recipient_name: 'Brian Robinson',
-                line1: '4th Floor',
-                line2: 'Unit #34',
-                city: 'San Jose',
-                country_code: 'IN',
-                postal_code: '95131',
-                phone: '011862212345678',
-                state: 'CA'
-              }
-            }
-          }],
-          note_to_payer: 'Contact us for any questions on your order.'
-        });
-      },
-
-      // Execute the payment
-      onAuthorize: function (data, actions) {
-        return actions.payment.execute().then(function () {
-          // Show a confirmation message to the buyer
-          window.alert('Thank you for your purchase!');
-        });
-      }
-    }, '#paypal-button');
-  </script>
-</body>
-
+    <div id="paypal-button-container"></div>
+     <div id="result">
+    </div>
+    <script src="https://www.paypal.com/sdk/js?client-id=AV5zb5B804XA0SHrKCIZ5cXBowdOaQqg59smKj8CwUh8nUk6whKOCexJpXIEiM6dFxo9U6RJa5kHOink"> 
+    </script>
+    <script src="./index.js">
+    </script>
+  </body>
 </html>
